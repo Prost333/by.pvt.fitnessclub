@@ -1,7 +1,7 @@
 package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.User;
-import by.pvt.fitnesclub.repository.Dao;
+import by.pvt.fitnesclub.repository.dao.Dao;
 
 import java.util.List;
 

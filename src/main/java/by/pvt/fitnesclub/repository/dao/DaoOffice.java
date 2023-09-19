@@ -1,6 +1,7 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.Office;
+import by.pvt.fitnesclub.entity.OfficeWithSubSelect;
 import by.pvt.fitnesclub.entity.User;
 
 import java.math.BigDecimal;
@@ -14,4 +15,5 @@ public interface DaoOffice {
     List<Office> getAll();
     void changPrice(Long id, BigDecimal bigDecimal);
     void changeMAXUser(Long id, Long maxUser);
+    List<OfficeWithSubSelect> getSmallOffice();
 }

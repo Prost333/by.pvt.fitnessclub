@@ -2,7 +2,8 @@ package by.pvt.fitnesclub.repository;
 
 import by.pvt.fitnesclub.conector.HibernateConfig;
 import by.pvt.fitnesclub.entity.Office;
-import by.pvt.fitnesclub.entity.User;
+import by.pvt.fitnesclub.entity.OfficeWithSubSelect;
+import by.pvt.fitnesclub.repository.dao.DaoOffice;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -10,7 +11,7 @@ import javax.persistence.Query;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OfficeRepositoryHibernate implements DaoOffice{
+public class OfficeRepositoryHibernate implements DaoOffice {
     private final SessionFactory sessionFactory;
 
     public OfficeRepositoryHibernate() {
@@ -79,5 +80,12 @@ public class OfficeRepositoryHibernate implements DaoOffice{
         Session session=sessionFactory.openSession();
         Query query=session.createQuery("Select s from office s");
         return (List<Office>)query.getResultList();
+    }
+
+
+    public List<OfficeWithSubSelect> getSmallOffice() {
+        Session session=sessionFactory.openSession();
+        Query query=session.createQuery("select s from OfficeWithSubSelect s");
+        return (List<OfficeWithSubSelect>)query.getResultList();
     }
 }

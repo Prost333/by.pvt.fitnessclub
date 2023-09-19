@@ -1,17 +1,16 @@
 package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.Office;
-import by.pvt.fitnesclub.entity.User;
-import by.pvt.fitnesclub.repository.Dao;
-import by.pvt.fitnesclub.repository.DaoOffice;
+import by.pvt.fitnesclub.entity.OfficeWithSubSelect;
+import by.pvt.fitnesclub.repository.dao.DaoOffice;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OfficeServise {
+public class OfficeService {
     private final DaoOffice dao;
 
-    public OfficeServise(DaoOffice dao) {
+    public OfficeService(DaoOffice dao) {
         this.dao = dao;
     }
     public void add1(Office office, Long iventarNumer){
@@ -41,6 +40,10 @@ public class OfficeServise {
         Office office=dao.findOfficeById(id);
         Double d=office.getCost().doubleValue()/office.getMaxUser();
         return new BigDecimal(d);
+    }
+
+    public List<OfficeWithSubSelect> getSmallOffice() {
+        return dao.getSmallOffice();
     }
 
 }

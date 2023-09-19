@@ -2,6 +2,7 @@ package by.pvt.fitnesclub.repository;
 
 import by.pvt.fitnesclub.conector.HibernateConfig;
 import by.pvt.fitnesclub.entity.User;
+import by.pvt.fitnesclub.repository.dao.Dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

@@ -1,4 +1,4 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.User;
 

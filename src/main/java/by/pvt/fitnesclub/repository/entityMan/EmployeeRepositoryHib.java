@@ -1,4 +1,4 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.entityMan;
 
 import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.Employee;
@@ -6,12 +6,13 @@ import by.pvt.fitnesclub.entity.Visitor;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
-public class EmployeeRepositoryHib implements DaoEmployee {
+public class EmployeeRepositoryHib  {
     EntityManager entityManager= HibernateConfiguration.getEntityManager();
 
-    @Override
+
     public void add(Employee employee) {
         entityManager.getTransaction().begin();
         entityManager.persist(employee);
@@ -19,13 +20,13 @@ public class EmployeeRepositoryHib implements DaoEmployee {
         entityManager.close();
     }
 
-    @Override
+
     public Employee findEmployeeById(Long id) {
         Employee user=entityManager.find(Employee.class,id);
         return user;
     }
 
-    @Override
+
     public void deleteEmployee(Long id) {
         entityManager.getTransaction().begin();
         entityManager.remove(findEmployeeById(id));
@@ -33,11 +34,16 @@ public class EmployeeRepositoryHib implements DaoEmployee {
         entityManager.close();
     }
 
-    @Override
+
     public List<Employee> getAllEmployee() {
         EntityManager entityManager= HibernateConfiguration.getEntityManager();
         List<Employee>userList=entityManager.createQuery("select s from Employee s").getResultList();
         entityManager.close();
         return userList;
+    }
+
+
+    public List<Employee> getByMaxSalary() {
+        return null;
     }
 }

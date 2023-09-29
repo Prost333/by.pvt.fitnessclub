@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.Query;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class VisitUserRepHibernate implements VisitDao {
@@ -46,4 +48,25 @@ public class VisitUserRepHibernate implements VisitDao {
         Query query=session.createQuery("Select s from Visit_User s");
         return (List<VisitUser>)query.getResultList();
     }
+
+    public List<VisitUser> findByData(LocalDate start, LocalDate end) {
+        Session session=sessionFactory.openSession();
+        Query query=session.createQuery("Select s from VisitUser s where  s.dateOfVisit>=:start " +
+                "and s.dateOfVisit<=:end");
+        query.setParameter("start", start);
+        query.setParameter("end", end);
+        List <VisitUser> visitUserList= (List <VisitUser>)query.getResultList();
+        session.close();
+        return  visitUserList;
+
+    }
+
+    public BigDecimal sumByDay(List<VisitUser> visitUserList){
+        BigDecimal sum= BigDecimal.valueOf(0);
+        for (VisitUser v:visitUserList) {
+            sum=v.getMoneySpent();
+        }
+        return sum;
+    }
+
 }

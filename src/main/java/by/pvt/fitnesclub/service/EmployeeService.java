@@ -24,4 +24,13 @@ public class EmployeeService {
     public List<Employee> getAllEmployee(){
         return  dao.getAllEmployee();
     }
+    public List<Employee> getByMaxSalary (){
+        return dao.getByMaxSalary();
+    }
+    public List<Employee> getByMinSalary (){
+        return  dao.getByMinSalary();
+    }
+    public List<Employee> findAll(){
+       return dao.findAll();
+    }
 }

@@ -14,7 +14,7 @@ public class HibernateConfig {
 
     static {
         Properties properties= new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "none");
         properties.setProperty("hibernate.use_sql_comments", "true");
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
@@ -26,13 +26,15 @@ public class HibernateConfig {
         properties.setProperty("hibernate.show_format","true");
         conf=new Configuration();
         conf.setProperties(properties);
+        conf.addAnnotatedClass(VisitUser.class);
         conf.addAnnotatedClass(User.class);
         conf.addAnnotatedClass(Office.class);
         conf.addAnnotatedClass(Address.class);
-        conf.addAnnotatedClass(VisitUser.class);
+        conf.addAnnotatedClass(Activites.class);
         conf.addAnnotatedClass(OfficeWithSubSelect.class);
         conf.addAnnotatedClass(Visitor.class);
         conf.addAnnotatedClass(Employee.class);
+        conf.addAnnotatedClass(Note.class);
         serviceRegitryBuilder = new StandardServiceRegistryBuilder();
         serviceRegitryBuilder.applySettings(properties);
     }

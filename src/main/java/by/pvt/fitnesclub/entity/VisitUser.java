@@ -1,8 +1,6 @@
 package by.pvt.fitnesclub.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class VisitUser {
     @Id
-    @SequenceGenerator(name = "seq_visit_user", sequenceName = "visit_user_seq", allocationSize = 1)
+    @SequenceGenerator(name = "seq_visit_user", sequenceName = "visit_user_seq", allocationSize = 1, schema = "fitness")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_visit_user")
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,5 +26,10 @@ public class VisitUser {
     private BigDecimal moneySpent;
     @Column(name = "activity_id")
     private Long activityId;
+    @ManyToOne
+    @JoinColumn(name ="visitor_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private  Visitor visitor;
 }
 

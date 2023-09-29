@@ -9,4 +9,5 @@ public interface Dao {
     User findUserById(Long id);
     void deleteUser(Long id);
     List<User> getAllUser();
+    List <User> findUserByName (String name);
 }

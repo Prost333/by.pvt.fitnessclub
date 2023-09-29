@@ -4,6 +4,8 @@ import by.pvt.fitnesclub.entity.VisitUser;
 import by.pvt.fitnesclub.repository.dao.DaoOffice;
 import by.pvt.fitnesclub.repository.dao.VisitDao;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class VisitUserService {
@@ -24,5 +26,11 @@ public class VisitUserService {
     }
     public List<VisitUser> getAllVisit() {
         return dao.getAllVisit();
+    }
+    public List<VisitUser> findByData(LocalDate start, LocalDate end){
+        return dao.findByData(start,end);
+    }
+    public BigDecimal sumByDay(List<VisitUser> visitUserList){
+        return dao.sumByDay(visitUserList);
     }
 }

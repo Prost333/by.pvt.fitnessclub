@@ -2,6 +2,8 @@ package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.VisitUser;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface VisitDao {
@@ -12,4 +14,6 @@ public interface VisitDao {
     VisitUser findById(Long id);
 
     List<VisitUser> getAllVisit();
+    List<VisitUser> findByData(LocalDate start, LocalDate end);
+    BigDecimal sumByDay(List<VisitUser> visitUserList);
 }

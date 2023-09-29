@@ -25,6 +25,10 @@ public class UserRepository implements Dao {
         return userList;
     }
 
+    @Override
+    public List <User> findUserByName(String name) {
+        return null;
+    }
 
 
     public User findUserById(Long id){

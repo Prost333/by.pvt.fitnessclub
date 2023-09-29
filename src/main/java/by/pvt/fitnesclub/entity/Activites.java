@@ -1,12 +1,14 @@
 package by.pvt.fitnesclub.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Data
+@EqualsAndHashCode
+@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
@@ -14,12 +16,17 @@ import javax.persistence.*;
 public class Activites {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private  Long id;
     @Column(name="name")
     private String name;
     @Column(name="cost")
     private  Double cost;
+    @OneToMany
+    @JoinColumn(name= "activ_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Office> office;
 
 }

@@ -12,16 +12,14 @@ import java.time.LocalDate;
 
 
 @Data
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 //@ToString
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 //@MappedSuperclass
-//@Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name= "TYPY_OF_USER")
 @Inheritance(strategy = InheritanceType.JOINED)
-
 @Table(schema = "fitness", name = "user")
 @Entity
 public class User {

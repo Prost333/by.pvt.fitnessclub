@@ -1,6 +1,7 @@
 package by.pvt.fitnesclub.repository;
 
 import by.pvt.fitnesclub.conector.HibernateConfig;
+import by.pvt.fitnesclub.entity.Activites;
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.repository.dao.Dao;
 import org.hibernate.Session;
@@ -34,14 +35,26 @@ public class UserRepositoryHibernate implements Dao {
 
     @Override
     public void deleteUser(Long id) {
-
+        Session session = sessionFactory.openSession();
+        User user= session.get(User.class, id);
+        session.getTransaction().begin();
+        session.remove(user);
+        session.getTransaction().commit();
     }
 
     @Override
     public List<User> getAllUser() {
-        Session session=sessionFactory.openSession();
-        Query query=session.createQuery("Select s from User s");
-        return (List<User>)query.getResultList();
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("Select s from User s");
+        return (List<User>) query.getResultList();
+    }
 
+    public List <User> findUserByName (String name){
+        Session session= sessionFactory.openSession();
+        Query query = session.createQuery("Select u from User u where u.name in (:name)");
+        query.setParameter("name", name);
+        List <User> users = (List<User>) query.getResultList();
+        session.close();
+        return  users;
     }
 }

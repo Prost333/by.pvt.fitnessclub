@@ -30,7 +30,7 @@ public class ActivitesService {
     public List<Activites> getAllActivites(){
         return dao.getAllActivites();
     }
-    public Double lowPriceActivites(){
+    public Long lowPriceActivites(){
         return dao.lowPriceActivites();
     }
 }

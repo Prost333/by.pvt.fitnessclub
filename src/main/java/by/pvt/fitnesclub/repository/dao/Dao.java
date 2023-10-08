@@ -10,4 +10,5 @@ public interface Dao {
     void deleteUser(Long id);
     List<User> getAllUser();
     List <User> findUserByName (String name);
+    List<User> findAllBySalary(Long minAge, Long maxAge);
 }

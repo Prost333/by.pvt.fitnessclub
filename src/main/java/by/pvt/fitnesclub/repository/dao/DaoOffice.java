@@ -9,11 +9,21 @@ import java.util.List;
 
 public interface DaoOffice {
     void add(Office office);
+
     void add1(Office office, Long iventarNumer);
+
     Office findOfficeById(Long id);
+
     void deleteOffice(Office office);
+
     List<Office> getAll();
+
     void changPrice(Long id, BigDecimal bigDecimal);
+
     void changeMAXUser(Long id, Long maxUser);
+
     List<OfficeWithSubSelect> getSmallOffice();
+
+    Long getCountGuest();
+    List<Office> findAllByUserAndPrice(Long minUser, Long maxUser);
 }

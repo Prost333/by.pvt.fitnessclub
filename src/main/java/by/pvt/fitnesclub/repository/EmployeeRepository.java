@@ -4,6 +4,7 @@ import by.pvt.fitnesclub.conector.HibernateConfig;
 import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.entity.Office;
 import by.pvt.fitnesclub.entity.User;
+import by.pvt.fitnesclub.entity.VisitUser;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -18,7 +19,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class EmployeeRepository implements DaoEmployee {
     private final SessionFactory sessionFactory;
@@ -140,23 +143,23 @@ public class EmployeeRepository implements DaoEmployee {
         return employeeList;
     }
 
-    public  List<Employee> findAllWithPagination(int size,int page){
+    public List<Employee> findAllWithPagination(int size, int page) {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root<Employee> employee = criteriaQuery.from(Employee.class);
         criteriaQuery.select(employee).orderBy(criteriaBuilder.asc(employee.get("id")));
 
-        TypedQuery<Employee>typedQuery=entityManager.createQuery(criteriaQuery);
+        TypedQuery<Employee> typedQuery = entityManager.createQuery(criteriaQuery);
         typedQuery.setMaxResults(size);
 //        номер элл с ктр мы выводим рзлт
         typedQuery.setFirstResult(page);
 
-        List<Employee> employeeList=typedQuery.getResultList();
+        List<Employee> employeeList = typedQuery.getResultList();
         return employeeList;
     }
 
-    public List<Long> count(){
+    public List<Long> count() {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
@@ -165,27 +168,48 @@ public class EmployeeRepository implements DaoEmployee {
         return employeeList;
     }
 
-    public  List<Employee> findbyOffice(String name){
+    public List<Employee> findbyOffice(String name) {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root<Employee> employee = criteriaQuery.from(Employee.class);
-// добавь связь с офисом
-        Join<Employee, Office> office=employee.join("office");
-        criteriaQuery.where(criteriaBuilder.equal(office.get("name"),name));
+        Join<Employee, Office> office = employee.join("office");
+        criteriaQuery.where(criteriaBuilder.equal(office.get("name"), name));
 
-        List<Employee> employeeList=entityManager.createQuery(criteriaQuery).getResultList();
+        List<Employee> employeeList = entityManager.createQuery(criteriaQuery).getResultList();
         return employeeList;
     }
 
 
-    public  List<Employee> detachCriteria(String name){
-        DetachedCriteria employees=DetachedCriteria.forClass(Employee.class);
-        employees.add(Restrictions.eq("name",name));
-        EntityManager entityManager=sessionFactory.createEntityManager();
-        Session session=entityManager.unwrap(Session.class);
-        Criteria criteria=employees.getExecutableCriteria(session);
+    public List<Employee> detachCriteria(String name) {
+        DetachedCriteria employees = DetachedCriteria.forClass(Employee.class);
+        employees.add(Restrictions.eq("name", name));
+        EntityManager entityManager = sessionFactory.createEntityManager();
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = employees.getExecutableCriteria(session);
         return (List<Employee>) criteria.list();
+    }
+
+
+    public Long employeeForHiring(LocalDate start, LocalDate end) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("Select sum(s.salary) from Employee s where  s.hiring<=:start " +
+                "and s.quite<=:end or s.quite is null");
+        query.setParameter("start", start);
+        query.setParameter("end", end);
+        Long employeeList = (Long) query.getSingleResult();
+//        Long sum=0L;
+//        for (Long i: employeeList){
+//            sum+=i;
+//        }
+        session.close();
+        return employeeList;
+    }
+
+    public Long spendSalary(LocalDate start, LocalDate end){
+      Long days=(end.toEpochDay()-start.toEpochDay());
+
+      return (employeeForHiring(start,end)/30)*days;
     }
 
 

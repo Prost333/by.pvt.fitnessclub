@@ -27,4 +27,7 @@ public class UserService {
     public  List <User> findUserByName (String name){
         return dao.findUserByName(name);
     }
+    public List<User> findAllBySalary(Long minAge, Long maxAge){
+       return dao.findAllBySalary(minAge,maxAge);
+    }
 }

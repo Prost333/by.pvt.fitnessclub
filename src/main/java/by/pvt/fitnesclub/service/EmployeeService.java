@@ -3,6 +3,7 @@ package by.pvt.fitnesclub.service;
 import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EmployeeService {
@@ -32,5 +33,9 @@ public class EmployeeService {
     }
     public List<Employee> findAll(){
        return dao.findAll();
+    }
+
+    public Long spendSalary(LocalDate start, LocalDate end){
+        return dao.spendSalary(start,end);
     }
 }

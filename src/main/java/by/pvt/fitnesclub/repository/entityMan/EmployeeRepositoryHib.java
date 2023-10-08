@@ -2,6 +2,7 @@ package by.pvt.fitnesclub.repository.entityMan;
 
 import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.Employee;
+import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.entity.Visitor;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
 
@@ -41,6 +42,7 @@ public class EmployeeRepositoryHib  {
         entityManager.close();
         return userList;
     }
+
 
 
     public List<Employee> getByMaxSalary() {

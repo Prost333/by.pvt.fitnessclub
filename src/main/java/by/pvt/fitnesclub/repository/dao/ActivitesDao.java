@@ -10,5 +10,5 @@ public interface ActivitesDao {
     Activites findActivitesById(Long id);
     void deleteActivites(Long id);
     List<Activites> getAllActivites();
-     Double lowPriceActivites();
+    Long lowPriceActivites();
 }

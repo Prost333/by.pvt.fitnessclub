@@ -3,6 +3,7 @@ package by.pvt.fitnesclub.repository.dao;
 import by.pvt.fitnesclub.entity.Employee;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DaoEmployee {
@@ -17,4 +18,5 @@ public interface DaoEmployee {
     List<Employee> getByMaxSalary();
     List<Employee> getByMinSalary ();
     List<Employee> findAll();
+    Long spendSalary(LocalDate start, LocalDate end);
 }

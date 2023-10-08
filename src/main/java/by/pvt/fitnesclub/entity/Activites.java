@@ -1,6 +1,7 @@
 package by.pvt.fitnesclub.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(schema = "fitness", name = "activites")
+@org.hibernate.annotations.Cache( usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Activites {
 
     @Id
@@ -22,7 +24,7 @@ public class Activites {
     @Column(name="name")
     private String name;
     @Column(name="cost")
-    private  Double cost;
+    private  Long cost;
     @OneToMany
     @JoinColumn(name= "activ_id")
     @ToString.Exclude

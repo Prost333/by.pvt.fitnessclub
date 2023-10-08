@@ -2,12 +2,17 @@ package by.pvt.fitnesclub.repository;
 
 import by.pvt.fitnesclub.conector.HibernateConfig;
 import by.pvt.fitnesclub.entity.Activites;
+import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.repository.dao.Dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UserRepositoryHibernate implements Dao {
@@ -26,6 +31,18 @@ public class UserRepositoryHibernate implements Dao {
         session.close();
     }
 
+    public void addtrans(User user) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.getTransaction().begin();
+            session.persist(user);
+            session.getTransaction().commit();
+            session.close();
+        }catch (Exception e){
+            session.getTransaction().rollback();
+        }
+    }
+
     @Override
     public User findUserById(Long id) {
         Session session = sessionFactory.openSession();
@@ -36,7 +53,7 @@ public class UserRepositoryHibernate implements Dao {
     @Override
     public void deleteUser(Long id) {
         Session session = sessionFactory.openSession();
-        User user= session.get(User.class, id);
+        User user = session.get(User.class, id);
         session.getTransaction().begin();
         session.remove(user);
         session.getTransaction().commit();
@@ -49,12 +66,24 @@ public class UserRepositoryHibernate implements Dao {
         return (List<User>) query.getResultList();
     }
 
-    public List <User> findUserByName (String name){
-        Session session= sessionFactory.openSession();
+    public List<User> findUserByName(String name) {
+        Session session = sessionFactory.openSession();
         Query query = session.createQuery("Select u from User u where u.name in (:name)");
         query.setParameter("name", name);
-        List <User> users = (List<User>) query.getResultList();
+        List<User> users = (List<User>) query.getResultList();
         session.close();
-        return  users;
+        return users;
+    }
+
+    public List<User> findAllBySalary(Long minAge, Long maxAge) {
+        EntityManager entityManager = sessionFactory.createEntityManager();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> user = criteriaQuery.from(User.class);
+
+        criteriaQuery.select(user).where(criteriaBuilder.between(user.get("age"), minAge, maxAge)).
+                orderBy(criteriaBuilder.asc(user.get("age")));
+        List<User> userList = entityManager.createQuery(criteriaQuery).getResultList();
+        return userList;
     }
 }

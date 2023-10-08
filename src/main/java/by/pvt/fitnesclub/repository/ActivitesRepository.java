@@ -74,14 +74,27 @@ public class ActivitesRepository implements ActivitesDao {
 //    cites.forEach (o-> )
 //    c.put (String.valueOf(o[1], String.valueOf(o[0]));
 
-    public Double lowPriceActivites() {
+    public Long lowPriceActivites() {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Double> criteriaQuery = criteriaBuilder.createQuery(Double.class);
+        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
         criteriaQuery.select(criteriaBuilder.min(criteriaQuery.from(Activites.class).get("cost")));
         return entityManager.createQuery(criteriaQuery).getSingleResult();
-
     }
+
+    public Activites getActivitesandOffice(Long id){
+        Session session= sessionFactory.openSession();
+        Query query=session.createQuery("Select s from Activites s");
+        List<Activites> activitesList = (List<Activites>) query.getResultList();
+        session.close();
+        Session session1=sessionFactory.openSession();
+        Query query1= session1.createQuery("Select s from Office s");
+        List<Office> officeList=(List<Office>) query1.getResultList();
+        Activites activites=session1.get(Activites.class,id);
+        session1.close();
+        return activites;
+    }
+
 
 
 

@@ -1,4 +1,4 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.entityMan;
 
 import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.User;
@@ -27,6 +27,11 @@ public class UserRepository implements Dao {
 
     @Override
     public List <User> findUserByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<User> findAllBySalary(Long minAge, Long maxAge) {
         return null;
     }
 

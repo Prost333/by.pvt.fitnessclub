@@ -65,14 +65,6 @@ public class ActivitesRepository implements ActivitesDao {
         session.close();
         return activites;
     }
-// "select s from Activites s where s.salary>=minSalary and s.salary<= maxSalary order by s.salary"
-//    select distinct semployeeDetail.city from Activites e
-//    " select e from Activites e where e.detail.city=:city"
-//    "select count(s.id) as k, s.employDetail.city as city from Employee s group by  s.employDetail.city  "
-//    List <Objects[]> cites = (List<Activites>) query.getResultList();
-//    Map<String, String> c= new HashMap<>();
-//    cites.forEach (o-> )
-//    c.put (String.valueOf(o[1], String.valueOf(o[0]));
 
     public Long lowPriceActivites() {
         EntityManager entityManager = sessionFactory.createEntityManager();

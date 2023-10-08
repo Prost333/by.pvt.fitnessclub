@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(schema = "fitness", name = "activites")
-@org.hibernate.annotations.Cache( usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Cache( usage = CacheConcurrencyStrategy.READ_WRITE, region = "activites")
 public class Activites {
 
     @Id

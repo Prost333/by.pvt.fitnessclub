@@ -16,7 +16,7 @@
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="sa" />
             <!--             При запуске hibernate не создавать ничего нового-->
-            <property name="javax.persistence.schema-generation.database.action" value="update"/>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <!--             Форматировать SQL-->

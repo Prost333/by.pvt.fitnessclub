@@ -2,37 +2,41 @@ package by.pvt.fitnesclub.repository;
 
 import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.User;
+import by.pvt.fitnesclub.entity.Visitor;
+import by.pvt.fitnesclub.repository.dao.DaoVisitor;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class UserRepository implements  Dao{
+public class VisitorRepositoryHib implements DaoVisitor {
     EntityManager entityManager= HibernateConfiguration.getEntityManager();
-    public void add(User user){
+    public void add(Visitor visitor){
 
         entityManager.getTransaction().begin();
-        entityManager.persist(user);
+        entityManager.persist(visitor);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
 
-    public  List<User> getAllUser(){
+    public List<Visitor> getAllVisitor(){
         EntityManager entityManager= HibernateConfiguration.getEntityManager();
-        List<User>userList=entityManager.createQuery("select s from User s").getResultList();
+        List<Visitor>userList=entityManager.createQuery("select s from Visitor s").getResultList();
         entityManager.close();
         return userList;
     }
 
 
 
-    public User findUserById(Long id){
-        User user=entityManager.find(User.class,id);
+    public Visitor findVisitorById(Long id){
+       Visitor user=entityManager.find(Visitor.class,id);
         return user;
     }
-    public void deleteUser(Long id){
+
+    @Override
+    public void deleteVisitor(Long id) {
         entityManager.getTransaction().begin();
-        entityManager.remove(findUserById(id));
+        entityManager.remove(findVisitorById(id));
         entityManager.getTransaction().commit();
         entityManager.close();
     }

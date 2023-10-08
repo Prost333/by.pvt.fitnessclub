@@ -1,7 +1,7 @@
 package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.User;
-import by.pvt.fitnesclub.repository.Dao;
+import by.pvt.fitnesclub.repository.dao.Dao;
 
 import java.util.List;
 
@@ -23,5 +23,11 @@ public class UserService {
     }
     public List<User> getAllUser(){
        return  dao.getAllUser();
+    }
+    public  List <User> findUserByName (String name){
+        return dao.findUserByName(name);
+    }
+    public List<User> findAllBySalary(Long minAge, Long maxAge){
+       return dao.findAllBySalary(minAge,maxAge);
     }
 }

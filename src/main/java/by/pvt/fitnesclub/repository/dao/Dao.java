@@ -1,4 +1,4 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.User;
 
@@ -9,4 +9,6 @@ public interface Dao {
     User findUserById(Long id);
     void deleteUser(Long id);
     List<User> getAllUser();
+    List <User> findUserByName (String name);
+    List<User> findAllBySalary(Long minAge, Long maxAge);
 }

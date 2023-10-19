@@ -1,12 +1,14 @@
-package by.pvt.fitnesclub.repository;
+package by.pvt.fitnesclub.repository.entityMan;
 
 import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.User;
+import by.pvt.fitnesclub.repository.dao.Dao;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.*;
+
 import java.util.List;
 
-public class UserRepository implements  Dao{
+public class UserRepository implements Dao {
     EntityManager entityManager= HibernateConfiguration.getEntityManager();
     public void add(User user){
 
@@ -24,6 +26,15 @@ public class UserRepository implements  Dao{
         return userList;
     }
 
+    @Override
+    public List <User> findUserByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<User> findAllBySalary(Long minAge, Long maxAge) {
+        return null;
+    }
 
 
     public User findUserById(Long id){

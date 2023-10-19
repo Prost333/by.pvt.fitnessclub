@@ -6,17 +6,18 @@ import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.entity.Office;
 import by.pvt.fitnesclub.entity.OfficeWithSubSelect;
 import by.pvt.fitnesclub.repository.dao.DaoOffice;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.List;
-
+@Repository
 public class OfficeRepositoryHibernate implements DaoOffice {
     private final SessionFactory sessionFactory;
 

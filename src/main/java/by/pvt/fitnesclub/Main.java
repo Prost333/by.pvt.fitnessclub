@@ -1,9 +1,13 @@
 package by.pvt.fitnesclub;
 
+import by.pvt.fitnesclub.config.HibernateConfiguration;
+import by.pvt.fitnesclub.config.UserConfig;
 import by.pvt.fitnesclub.entity.*;
 import by.pvt.fitnesclub.repository.*;
 import by.pvt.fitnesclub.repository.entityMan.EmployeeRepositoryHib;
 import by.pvt.fitnesclub.service.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,23 +18,37 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        LocalDate localDate = LocalDate.now();
-        BigDecimal bigDecimal = BigDecimal.valueOf(1000);
-        UserService userService = new UserService(new UserRepositoryHibernate());
-        OfficeService officeService = new OfficeService(new OfficeRepositoryHibernate());
-        VisitorService visitorService = new VisitorService(new VisitorRepositoryHib());
-        EmployeeService employeeService = new EmployeeService(new EmployeeRepository());
-        ActivitesService activitesService = new ActivitesService(new ActivitesRepository());
-        VisitUserService visitUserService = new VisitUserService(new VisitUserRepHibernate());
-        NoteService noteService = new NoteService(new NoteRepository());
+//        ApplicationContext applicationContext=new AnnotationConfigApplicationContext(UserConfig.class);
+//        ActivitesService activitesService=applicationContext.getBean("activitesService",ActivitesService.class);
+//        System.out.println(activitesService.getAllActivites());
+        String date = "2023-09-18 13:18";
+        LocalDateTime time = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(HibernateConfiguration.class);
+        SaleService saleService = applicationContext.getBean("saleServise", SaleService.class);
+        Sale sale = new Sale();
+        sale.setStausUser("new");
+        sale.setValue(new BigDecimal(32));
+        sale.setStart(LocalDate.from(time));
+        saleService.add(sale);
+
+//        LocalDate localDate = LocalDate.now();
+//        BigDecimal bigDecimal = BigDecimal.valueOf(1000);
+//        UserService userService = new UserService(new UserRepositoryHibernate());
+//        OfficeService officeService = new OfficeService(new OfficeRepositoryHibernate());
+//        VisitorService visitorService = new VisitorService(new VisitorRepositoryHib());
+//        EmployeeService employeeService = new EmployeeService(new EmployeeRepository());
+//        ActivitesService activitesService = new ActivitesService(new ActivitesRepository());
+//        VisitUserService visitUserService = new VisitUserService(new VisitUserRepHibernate());
+//        NoteService noteService = new NoteService(new NoteRepository());
 //        OfficeRepositoryHibernate officeRepositoryHibernate=new OfficeRepositoryHibernate();
 //        officeRepositoryHibernate.getOfficeandActivitec(1L);
-        ActivitesRepository activitesRepository=new ActivitesRepository();
-        System.out.println(activitesRepository.getActivitesandOffice(1L));
-        Address address = new Address("jopin", "tu", "12", "1241");
-//        Visitor visitor = new Visitor();
-        String date = "2023-09-18 13:18";
-        String date1 = "2023-09-18";
+//        ActivitesRepository activitesRepository=new ActivitesRepository();
+//        System.out.println(activitesRepository.getActivitesandOffice(1L));
+//        Address address = new Address("jopin", "tu", "12", "1241");
+////        Visitor visitor = new Visitor();
+
+//        String date1 = "2023-09-18";
 
 //        Activites activites= new Activites();
 //        activites.setCost(5L);
@@ -54,7 +72,7 @@ public class Main {
 //        visitor.setAddress(address);
 //        visitorService.add(visitor);
 //
-//        LocalDateTime time = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
 //        Note note = new Note();
 //        note.setLocalDateTime(time);
 //        note.setOffice(office);

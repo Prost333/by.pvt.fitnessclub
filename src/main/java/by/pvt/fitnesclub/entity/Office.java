@@ -2,13 +2,13 @@ package by.pvt.fitnesclub.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
-@Entity
+@jakarta.persistence.Entity
 @NoArgsConstructor
 @Table(schema = "fitness", name = "office")
 public class Office {

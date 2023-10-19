@@ -2,9 +2,10 @@ package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.repository.dao.Dao;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UserService {
     private  final Dao dao;
 

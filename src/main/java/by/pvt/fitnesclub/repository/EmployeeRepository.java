@@ -6,23 +6,20 @@ import by.pvt.fitnesclub.entity.Office;
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.entity.VisitUser;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
-import org.hibernate.Criteria;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+@Repository
 public class EmployeeRepository implements DaoEmployee {
     private final SessionFactory sessionFactory;
 
@@ -168,27 +165,27 @@ public class EmployeeRepository implements DaoEmployee {
         return employeeList;
     }
 
-    public List<Employee> findbyOffice(String name) {
-        EntityManager entityManager = sessionFactory.createEntityManager();
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
-        Root<Employee> employee = criteriaQuery.from(Employee.class);
-        Join<Employee, Office> office = employee.join("office");
-        criteriaQuery.where(criteriaBuilder.equal(office.get("name"), name));
-
-        List<Employee> employeeList = entityManager.createQuery(criteriaQuery).getResultList();
-        return employeeList;
-    }
-
-
-    public List<Employee> detachCriteria(String name) {
-        DetachedCriteria employees = DetachedCriteria.forClass(Employee.class);
-        employees.add(Restrictions.eq("name", name));
-        EntityManager entityManager = sessionFactory.createEntityManager();
-        Session session = entityManager.unwrap(Session.class);
-        Criteria criteria = employees.getExecutableCriteria(session);
-        return (List<Employee>) criteria.list();
-    }
+//    public List<Employee> findbyOffice(String name) {
+//        EntityManager entityManager = sessionFactory.createEntityManager();
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
+//        Root<Employee> employee = criteriaQuery.from(Employee.class);
+//        Join<Employee, Office> office = employee.join("office");
+//        criteriaQuery.where(criteriaBuilder.equal(office.get("name"), name));
+//
+//        List<Employee> employeeList = entityManager.createQuery(criteriaQuery).getResultList();
+//        return employeeList;
+//    }
+//
+//
+//    public List<Employee> detachCriteria(String name) {
+//        DetachedCriteria employees = DetachedCriteria.forClass(Employee.class);
+//        employees.add(Restrictions.eq("name", name));
+//        EntityManager entityManager = sessionFactory.createEntityManager();
+//        Session session = entityManager.unwrap(Session.class);
+//        Criteria criteria = employees.getExecutableCriteria(session);
+//        return (List<Employee>) criteria.list();
+//    }
 
 
     public Long employeeForHiring(LocalDate start, LocalDate end) {

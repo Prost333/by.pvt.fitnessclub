@@ -2,9 +2,10 @@ package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.Note;
 import by.pvt.fitnesclub.repository.dao.DaoNote;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class NoteService {
     private final DaoNote dao;
 

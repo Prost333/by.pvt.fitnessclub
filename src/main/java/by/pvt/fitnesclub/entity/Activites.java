@@ -3,7 +3,8 @@ package by.pvt.fitnesclub.entity;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.List;
 
 @EqualsAndHashCode

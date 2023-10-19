@@ -5,9 +5,10 @@ import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.repository.dao.ActivitesDao;
 import by.pvt.fitnesclub.repository.dao.Dao;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ActivitesService {
     private static ActivitesDao dao;
 

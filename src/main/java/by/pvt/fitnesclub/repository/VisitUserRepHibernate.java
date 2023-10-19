@@ -6,13 +6,17 @@ import by.pvt.fitnesclub.entity.VisitUser;
 import by.pvt.fitnesclub.repository.dao.VisitDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
+@Repository
 public class VisitUserRepHibernate implements VisitDao {
+    @Autowired
     private final SessionFactory sessionFactory;
 
     public VisitUserRepHibernate() {

@@ -2,10 +2,11 @@ package by.pvt.fitnesclub.service;
 
 import by.pvt.fitnesclub.entity.Employee;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class EmployeeService {
     private  final DaoEmployee dao;
 

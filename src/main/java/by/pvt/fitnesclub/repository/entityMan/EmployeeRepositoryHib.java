@@ -6,8 +6,8 @@ import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.entity.Visitor;
 import by.pvt.fitnesclub.repository.dao.DaoEmployee;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import jakarta.persistence.*;
+
 import java.util.List;
 
 public class EmployeeRepositoryHib  {

@@ -4,7 +4,8 @@ import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.repository.dao.Dao;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.*;
+
 import java.util.List;
 
 public class UserRepository implements Dao {

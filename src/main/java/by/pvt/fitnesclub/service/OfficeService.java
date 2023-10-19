@@ -3,10 +3,11 @@ package by.pvt.fitnesclub.service;
 import by.pvt.fitnesclub.entity.Office;
 import by.pvt.fitnesclub.entity.OfficeWithSubSelect;
 import by.pvt.fitnesclub.repository.dao.DaoOffice;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+@Service
 public class OfficeService {
     private final DaoOffice dao;
 

@@ -3,11 +3,12 @@ package by.pvt.fitnesclub.service;
 import by.pvt.fitnesclub.entity.VisitUser;
 import by.pvt.fitnesclub.repository.dao.DaoOffice;
 import by.pvt.fitnesclub.repository.dao.VisitDao;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class VisitUserService {
     private final VisitDao dao;
 

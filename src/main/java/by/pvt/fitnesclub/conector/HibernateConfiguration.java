@@ -1,7 +1,7 @@
 package by.pvt.fitnesclub.conector;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 
 public class HibernateConfiguration {
     public  static EntityManager getEntityManager(){

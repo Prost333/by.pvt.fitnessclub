@@ -4,9 +4,10 @@ import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.entity.Visitor;
 import by.pvt.fitnesclub.repository.dao.Dao;
 import by.pvt.fitnesclub.repository.dao.DaoVisitor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class VisitorService {
     private  final DaoVisitor dao;
 

@@ -6,10 +6,12 @@ import by.pvt.fitnesclub.entity.Office;
 import by.pvt.fitnesclub.repository.dao.DaoNote;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Query;
+import jakarta.persistence.*;
+
 import java.util.List;
-
+@Component
 public class NoteRepository implements DaoNote {
     private final SessionFactory sessionFactory;
 

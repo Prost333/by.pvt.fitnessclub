@@ -4,10 +4,12 @@ import by.pvt.fitnesclub.conector.HibernateConfiguration;
 import by.pvt.fitnesclub.entity.User;
 import by.pvt.fitnesclub.entity.Visitor;
 import by.pvt.fitnesclub.repository.dao.DaoVisitor;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.*;
+
 import java.util.List;
-
+@Repository
 public class VisitorRepositoryHib implements DaoVisitor {
     EntityManager entityManager= HibernateConfiguration.getEntityManager();
     public void add(Visitor visitor){

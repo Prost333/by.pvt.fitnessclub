@@ -3,20 +3,17 @@ package by.pvt.fitnesclub.repository;
 import by.pvt.fitnesclub.conector.HibernateConfig;
 import by.pvt.fitnesclub.entity.*;
 import by.pvt.fitnesclub.repository.dao.ActivitesDao;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
+import jakarta.persistence.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NamedQueries;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
+@RequiredArgsConstructor
+@Component
 public class ActivitesRepository implements ActivitesDao {
     private final SessionFactory sessionFactory;
 
@@ -53,7 +50,7 @@ public class ActivitesRepository implements ActivitesDao {
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("Select s from Activites s");
 //        query.setFirstResult(1);   убирает первый объект
-        session.close();
+//        session.close();
         return (List<Activites>) query.getResultList();
     }
 

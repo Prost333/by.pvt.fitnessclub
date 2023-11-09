@@ -1,0 +1,54 @@
+<!DOCTYPE html> <html xmlns:th="http://www.thymeleaf.org">  <meta charset="UTF-8"/>
+<head>
+
+<!--    <title>Activities List</title>-->
+</head>
+<body>
+
+<h2 th:text="Список" align="center"></h2>
+<form action="#" th:action="@{/activities/getActivities}" th:object="${activities1}"
+      method="get">
+    <fieldset>
+        <input type="submit" th:value="activities">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            <tr th:each="activites : ${activities}">
+                <td th:text="${activites.name}"></td>
+                <td th:text="${activity.cost}"></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+<h1>Add New Activity</h1>
+<form method="Post" th:action="@{/activites}" th:object="${activitesResponse}">
+    <label>Name: <input type="text" th:field="*{name}" placeholder= "Name"/></label>
+    <br/>
+    <label>Description: <input type="text" th:field="*{cost}" placeholder= "Cost"/></label>
+    <br/>
+
+    <input type="submit" value="Submit"/>
+</form>
+<a href="/activites">Cancel</a>
+
+<form action="#" th:action="@{/activities/delete}" th:object="${activityResponse}" method="post">
+    <fieldset>
+        <label>Id</label>
+        <input type="number" name="id" th:value="*{id}" placeholder="Id">
+        <br/>
+        <input type="submit" th:value="Del">
+    </fieldset>
+</form>
+
+    <form action="#" th:action="@{/activities/getActiv}" th:object="${activityResponse}" method="post">
+        <fieldset>
+            <label>Id</label>
+            <input type="number" name="id" th:value="*{id}" placeholder="Id">
+            <br/>
+            <input type="submit" th:value="Get Activities">
+        </fieldset>
+    </form>
+</body>
+</html>

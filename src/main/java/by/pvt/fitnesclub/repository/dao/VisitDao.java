@@ -1,19 +1,15 @@
 package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.VisitUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
-public interface VisitDao {
-    void addVisit(VisitUser visitUser);
+public interface VisitDao extends JpaRepository<VisitUser,Long> {
 
-    void delete(Long id);
-
-    VisitUser findById(Long id);
-
-    List<VisitUser> getAllVisit();
-    List<VisitUser> findByData(LocalDate start, LocalDate end);
-    BigDecimal sumByDay(List<VisitUser> visitUserList);
+//    List<VisitUser> findByData(LocalDate start, LocalDate end);
+//    BigDecimal sumByDay(List<VisitUser> visitUserList);
 }

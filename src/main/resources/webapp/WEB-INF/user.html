@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+</head>
+<body>
+<h1>User List</h1>
+<form action="#" th:action="@{/activites/find}" th:object="${users}" method="get" >
+    <input type="submit" value="activites1"/>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="activites : ${users}">
+        <td th:text="${activites.id}"></td>
+        <td th:text="${activites.name}"></td>
+        <td th:text="${activites.cost}"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,83 +1,86 @@
 package by.pvt.fitnesclub;
 
-import by.pvt.fitnesclub.config.HibernateConfiguration;
-import by.pvt.fitnesclub.config.UserConfig;
 import by.pvt.fitnesclub.entity.*;
-import by.pvt.fitnesclub.repository.*;
-import by.pvt.fitnesclub.repository.entityMan.EmployeeRepositoryHib;
-import by.pvt.fitnesclub.service.*;
+
+import by.pvt.fitnesclub.service.NoteService;
+import by.pvt.fitnesclub.service.imp.NoteServiceImp;
+import by.pvt.fitnesclub.service.imp.OfficeServiceImp;
+import by.pvt.fitnesclub.service.imp.VisitorServiceImp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
-
+@Configuration
+@ComponentScan("by.pvt.fitnesclub.config")
 public class Main {
     public static void main(String[] args) {
 //        ApplicationContext applicationContext=new AnnotationConfigApplicationContext(UserConfig.class);
 //        ActivitesService activitesService=applicationContext.getBean("activitesService",ActivitesService.class);
 //        System.out.println(activitesService.getAllActivites());
-        String date = "2023-09-18 13:18";
-        LocalDateTime time = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+//        String date = "2023-09-18 13:18";
+//        LocalDateTime time = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+//
+//        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(HibernateConfiguration.class);
+//        SaleServiceImp saleService = applicationContext.getBean(SaleServiceImp.class);
+//        Sale sale = new Sale();
+//        sale.setStausUser("new");
+//        sale.setValue(new BigDecimal(35));
+//        sale.setStart(LocalDate.of(2023,2,14));
+//        sale.setStop(LocalDate.of(2023,2,15));
+//        saleService.add(sale);
+//        Sale sale1= saleService.findID(2L);
+//        System.out.println(sale1);
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(HibernateConfiguration.class);
-        SaleService saleService = applicationContext.getBean("saleServise", SaleService.class);
-        Sale sale = new Sale();
-        sale.setStausUser("new");
-        sale.setValue(new BigDecimal(32));
-        sale.setStart(LocalDate.from(time));
-        saleService.add(sale);
 
 //        LocalDate localDate = LocalDate.now();
 //        BigDecimal bigDecimal = BigDecimal.valueOf(1000);
-//        UserService userService = new UserService(new UserRepositoryHibernate());
-//        OfficeService officeService = new OfficeService(new OfficeRepositoryHibernate());
-//        VisitorService visitorService = new VisitorService(new VisitorRepositoryHib());
+//        UserServiceImp userService = new UserServiceImp(new UserRepositoryHibernate());
+//        OfficeServiceImp officeServiceImp = new OfficeServiceImp(new OfficeRepositoryHibernate());
+//        VisitorServiceImp visitorServiceImp = new VisitorServiceImp(new VisitorRepositoryHib());
 //        EmployeeService employeeService = new EmployeeService(new EmployeeRepository());
 //        ActivitesService activitesService = new ActivitesService(new ActivitesRepository());
 //        VisitUserService visitUserService = new VisitUserService(new VisitUserRepHibernate());
-//        NoteService noteService = new NoteService(new NoteRepository());
+//        NoteServiceImp noteService = new NoteServiceImp(new NoteRepository());
 //        OfficeRepositoryHibernate officeRepositoryHibernate=new OfficeRepositoryHibernate();
 //        officeRepositoryHibernate.getOfficeandActivitec(1L);
 //        ActivitesRepository activitesRepository=new ActivitesRepository();
 //        System.out.println(activitesRepository.getActivitesandOffice(1L));
 //        Address address = new Address("jopin", "tu", "12", "1241");
-////        Visitor visitor = new Visitor();
+////        VisitorServiceImp visitor = new VisitorServiceImp();
 
-//        String date1 = "2023-09-18";
+        String date1 = "2023-09-18";
 
 //        Activites activites= new Activites();
 //        activites.setCost(5L);
 //        activites.setName("gum");
 //        activitesService.add(activites);
+//        OfficeServiceImp officeServiceImp =applicationContext.getBean(OfficeServiceImp.class);
 //        Office office = new Office("relax zone", 123L, "AKTIV", 15L, new BigDecimal(45));
-//        officeService.add(office);
-//        System.out.println(officeService.findAllByUserAndPrice(10L, 50L));
+//        officeServiceImp.add(office);
+//        System.out.println(officeServiceImp.findAllByUserAndPrice(10L, 50L));
 
-//        System.out.println(officeService.getCountGuest());
+//        System.out.println(officeServiceImp.getCountGuest());
 //        System.out.println(activitesService.lowPriceActivites());
-
-//        Visitor visitor = new Visitor();
-//        visitor.setDate(LocalDate.parse(date1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-//        visitor.setMoney(new BigDecimal(15));
+//        VisitorServiceImp visitorServiceImp =applicationContext.getBean(VisitorServiceImp.class);
+//        Visitor visitor =new Visitor();
+//        visitor.setSurname("Dimon");
+//        visitor.setName("Dimon");
 //        visitor.setStatus(Status.ACTIVITY);
-//        visitor.setPhoneNumber("15245");
-//        visitor.setAge(65L);
-//        visitor.setName("Yra");
-//        visitor.setSurname("Kot");
-//        visitor.setAddress(address);
-//        visitorService.add(visitor);
+//        visitor.setMoney(new BigDecimal(12));
+//        visitorServiceImp.add(visitor);
 //
-
+//        NoteService noteService = (NoteService) applicationContext.getBean("noteServiceImp");
 //        Note note = new Note();
 //        note.setLocalDateTime(time);
-//        note.setOffice(office);
-//        note.setVisitor(visitor);
+//        note.setOffice(officeServiceImp.findID(2L));
+//        note.setVisitor(visitorServiceImp.findID(11L));
 //        noteService.add(note);
+
 
 
 //        Employee employee = new Employee();
@@ -120,11 +123,11 @@ public class Main {
 //
 
 
-//        System.out.println(officeService.getSmallOffice());
-//        Office office=officeService.findUserById(1L);
-//        officeService.changPrice(1L,new BigDecimal(75));
-//        officeService.changeMAXUser(1L,100L);
-//        System.out.println(officeService.priceForUser(2L));
+//        System.out.println(officeServiceImp.getSmallOffice());
+//        Office office=officeServiceImp.findUserById(1L);
+//        officeServiceImp.changPrice(1L,new BigDecimal(75));
+//        officeServiceImp.changeMAXUser(1L,100L);
+//        System.out.println(officeServiceImp.priceForUser(2L));
 
 
     }

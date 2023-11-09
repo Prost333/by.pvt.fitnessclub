@@ -1,14 +1,13 @@
 package by.pvt.fitnesclub.repository.dao;
 
+import by.pvt.fitnesclub.entity.Sale;
 import by.pvt.fitnesclub.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface Dao {
-    void add(User user);
-    User findUserById(Long id);
-    void deleteUser(Long id);
-    List<User> getAllUser();
-    List <User> findUserByName (String name);
-    List<User> findAllBySalary(Long minAge, Long maxAge);
+public interface Dao extends JpaRepository<User,Long> {
+
+//    List <User> findByName (String name);
+//    List<User> findAllBySalary(Long minAge, Long maxAge);
 }

@@ -1,4 +1,4 @@
-package by.pvt.fitnesclub.service;
+package by.pvt.fitnesclub.service.imp;
 
 import by.pvt.fitnesclub.entity.Sale;
 import by.pvt.fitnesclub.repository.dao.SaleRepository;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SaleService {
+public class SaleServiceImp {
     @Autowired
     private SaleRepository saleRepository;
 

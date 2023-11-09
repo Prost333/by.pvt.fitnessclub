@@ -6,7 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import jakarta.persistence.*;
 
 import java.util.List;
-
+@Data
 @EqualsAndHashCode
 @ToString
 @Getter
@@ -26,10 +26,10 @@ public class Activites {
     private String name;
     @Column(name="cost")
     private  Long cost;
-    @OneToMany
-    @JoinColumn(name= "activ_id")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<Office> office;
+//    @OneToMany
+//    @JoinColumn(name= "activ_id")
+//    @ToString.Exclude
+//    @EqualsAndHashCode.Exclude
+//    private List<Office> office;
 
 }

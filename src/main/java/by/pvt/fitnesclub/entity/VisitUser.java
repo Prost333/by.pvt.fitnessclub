@@ -27,7 +27,7 @@ public class VisitUser {
     private BigDecimal moneySpent;
     @Column(name = "activity_id")
     private Long activityId;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name ="visitor_id")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

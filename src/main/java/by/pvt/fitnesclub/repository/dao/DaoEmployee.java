@@ -1,22 +1,17 @@
 package by.pvt.fitnesclub.repository.dao;
 
 import by.pvt.fitnesclub.entity.Employee;
+import by.pvt.fitnesclub.entity.Sale;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
 import java.time.LocalDate;
 import java.util.List;
 
-public interface DaoEmployee {
-    void add(Employee employee);
+public interface DaoEmployee extends JpaRepository<Employee,Long> {
 
-    Employee findEmployeeById(Long id);
-
-    void deleteEmployee(Long id);
-
-    List<Employee> getAllEmployee();
-
-    List<Employee> getByMaxSalary();
-    List<Employee> getByMinSalary ();
-    List<Employee> findAll();
-    Long spendSalary(LocalDate start, LocalDate end);
+//    List<Employee> getByMaxSalary();
+//    List<Employee> getByMinSalary ();
+//    List<Employee> findAll();
+//    Long spendSalary(LocalDate start, LocalDate end);
 }

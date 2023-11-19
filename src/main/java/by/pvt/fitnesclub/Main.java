@@ -1,19 +1,11 @@
 package by.pvt.fitnesclub;
 
-import by.pvt.fitnesclub.entity.*;
-
-import by.pvt.fitnesclub.service.NoteService;
-import by.pvt.fitnesclub.service.imp.NoteServiceImp;
-import by.pvt.fitnesclub.service.imp.OfficeServiceImp;
-import by.pvt.fitnesclub.service.imp.VisitorServiceImp;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan("by.pvt.fitnesclub.config")
@@ -131,4 +123,5 @@ public class Main {
 
 
     }
+
 }

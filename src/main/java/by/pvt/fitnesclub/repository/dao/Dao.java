@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface Dao extends JpaRepository<User,Long> {
 
-//    List <User> findByName (String name);
+    List <User> findByName (String name);
 //    List<User> findAllBySalary(Long minAge, Long maxAge);
 }

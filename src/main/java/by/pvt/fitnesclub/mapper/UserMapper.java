@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-@Mapping(target = "city",source ="address.city")
+//@Mapping(target = "city",source ="address.city")
     UserResponse userToUserResponse(User user);
 
     User toEntity(UserRequest userRequest);

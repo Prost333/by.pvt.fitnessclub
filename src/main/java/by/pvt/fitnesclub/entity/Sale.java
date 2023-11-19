@@ -18,6 +18,8 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name="name")
+    private String name;
     @Column(name = "value")
     private BigDecimal value;
     @Column(name = "start")
@@ -26,4 +28,9 @@ public class Sale {
     private LocalDate stop;
     @Column(name = "statusUser")
     private String stausUser;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private  User user;
 }

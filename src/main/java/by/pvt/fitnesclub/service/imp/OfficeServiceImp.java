@@ -15,11 +15,11 @@ public class OfficeServiceImp {
     private DaoOffice dao;
 
 
-    @Transactional
+
     public Office add (Office office){
         return  dao.save(office);
     }
-    @Transactional
+
     public void delete (Office office){
         dao.delete(office);
     }

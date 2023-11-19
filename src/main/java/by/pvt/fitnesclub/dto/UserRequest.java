@@ -8,4 +8,6 @@ public class UserRequest {
     private  String name;
     private  String surname;
     private Long age;
+    private  String password;
+    private  String status;
 }

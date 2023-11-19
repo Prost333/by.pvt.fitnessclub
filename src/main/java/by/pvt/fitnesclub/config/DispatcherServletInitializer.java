@@ -1,6 +1,6 @@
 package by.pvt.fitnesclub.config;
 
-import by.pvt.fitnesclub.controller.SaleMvcApi;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

@@ -8,5 +8,6 @@ public class UserResponse {
     private  String name;
     private  String surname;
     private Long age;
-    private  String city;
+    private  String password;
+    private  String status;
 }

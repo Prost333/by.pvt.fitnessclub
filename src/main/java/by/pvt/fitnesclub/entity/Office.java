@@ -19,7 +19,7 @@ public class Office {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "inventarNumer", nullable = false)
+    @Column(name = "inventarNumer")
     private Long inventarNumer;
     @Column(name = "status")
     private String status;

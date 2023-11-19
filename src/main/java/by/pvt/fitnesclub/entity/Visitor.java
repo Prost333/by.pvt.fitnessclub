@@ -21,7 +21,7 @@ public class Visitor extends User {
     private LocalDate date;
     private BigDecimal money;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status statuss;
     @OneToMany
     @JoinColumn(name = "visit_id")
     @ToString.Exclude

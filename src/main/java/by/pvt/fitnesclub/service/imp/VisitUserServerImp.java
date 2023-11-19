@@ -14,23 +14,23 @@ public class VisitUserServerImp {
     @Autowired
     private VisitDao visitDao;
 
-    @Transactional
+
     public void addVisit(VisitUser visitUser) {
         visitDao.save(visitUser);
     }
 
-    @Transactional
+
     public void delete(VisitUser visitUser) {
         visitDao.delete(visitUser);
     }
 
-    @Transactional
+
     public List<VisitUser> findById(Long id) {
         Optional<VisitUser> sale = Optional.of(visitDao.findById(id).orElseThrow());
         return (List<VisitUser>) sale.get();
     }
 
-    @Transactional
+
     public List<VisitUser> getAllVisit() {
         return visitDao.findAll();
     }
